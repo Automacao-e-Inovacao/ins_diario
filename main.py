@@ -293,7 +293,7 @@ try:
             OpenClipboard()
             clipboard_texto = GetClipboardData()
             print(str(clipboard_texto))
-            if 'Aplicativo CCsupervision' in clipboard_texto:
+            if 'CCsupervision' in clipboard_texto:
                 if not '10.48.98.70' in clipboard_texto:
                     try:
                         if ahk.win_get('Iniciar sess').exist:

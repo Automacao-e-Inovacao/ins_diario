@@ -226,7 +226,7 @@ def verificar_ip(ahk):
                         }
                     }
                     winclose, Informa
-                   ''', blocking=False)
+                   ''', blocking=True)
 
 
 def mudar_ip(ahk, x, y, x1, y1):
@@ -273,4 +273,4 @@ def mudar_ip(ahk, x, y, x1, y1):
                     winclose, ACD
                     winwaitactive, Personaliza
                     ControlClick, Button1, Personaliza
-                   ''')
+                   ''', blocking=True)
