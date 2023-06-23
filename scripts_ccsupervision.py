@@ -187,6 +187,17 @@ def verificar_ip(ahk):
         '''
                     loop
                     {
+                        ifwinexist, Informa
+                        {
+                            winkill, Informa
+                        }
+                        else
+                        {
+                            break
+                        }
+                    }
+                    loop
+                    {
                         ifwinexist, Edi
                         {
                             winkill, Edi
