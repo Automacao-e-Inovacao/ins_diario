@@ -15,15 +15,20 @@ logging.basicConfig(filename=os.path.join(caminho_relativo, 'logs.log'),
 
 logger = logging.getLogger(__name__)
 try:
-    from win32clipboard import OpenClipboard, CloseClipboard, GetClipboardData
+    from win32clipboard import OpenClipboard, CloseClipboard, GetClipboardData, EmptyClipboard
     from time import sleep
     import datetime
     from ahk import AHK
+    from fechar_processos import fechar_processo_python_anterior, fechar_processos
+    print(fechar_processo_python_anterior())
+
+    with open(os.path.join(caminho_relativo, "processo_anterior.txt"), "w") as arquivo:
+        arquivo.write(str(os.getpid()))
 
     ahk = AHK(
         executable_path=os.path.dirname(os.path.realpath(__file__)) + '\\venv\\' + '\\Autohotkey\\' + 'AutoHotkey.exe')
     from scripts_ccsupervision import esperar, esperar_janela_Edit, Abrir_CCsupervision, Aba_estatisticas, \
-        login_ccsupervision, verificar_ip, mudar_ip, Conexao_postgresql, fechar_tudo, fechar_janela_ACD_e_TEMP
+        login_ccsupervision, verificar_ip, mudar_ip, Conexao_postgresql, fechar_janela_ACD_e_TEMP
     from scripts_excel import Manipulacao, Manipulacao_2
 
     caminho = r"C:\ProgramData\Alcatel\CCSupervisor\Excel\TEMP.XLSM"
@@ -208,7 +213,7 @@ try:
                     ''', blocking=True)
 
 
-    fechar_tudo(lista_dos_caminhos_dos_processos, lista_dos_nomes_de_processos)
+    fechar_processos(lista_dos_caminhos_dos_processos, lista_dos_nomes_de_processos)
     Abrir_CCsupervision(ahk)
 
     verificar_ip(ahk)
@@ -223,11 +228,15 @@ try:
                     else:
                         (x_mudar_ip, y_mudar_ip, x_mudar_ip1, y_mudar_ip1) = 473, 39, 526, 304
                     mudar_ip(ahk, x_mudar_ip, y_mudar_ip, x_mudar_ip1, y_mudar_ip1)
-                    fechar_tudo(lista_dos_caminhos_dos_processos, lista_dos_nomes_de_processos)
+                    fechar_processos(lista_dos_caminhos_dos_processos, lista_dos_nomes_de_processos)
                     Abrir_CCsupervision(ahk)
                 break
             CloseClipboard()
         except:
+            try:
+                EmptyClipboard()
+            except:
+                pass
             try:
                 CloseClipboard()
             except:
@@ -258,7 +267,7 @@ try:
         for linha_2 in matriz_principal_2:
             db.manipular(f"""insert into "{tabela_2}" values ({qtd_insercao_db_2})""", linha_2)
 
-    fechar_tudo(lista_dos_caminhos_dos_processos, lista_dos_nomes_de_processos)
+    fechar_processos(lista_dos_caminhos_dos_processos, lista_dos_nomes_de_processos)
     Abrir_CCsupervision(ahk)
     usuario = 'poa_rpa'
     senha = 'Rpa@1234'
@@ -275,11 +284,15 @@ try:
                     else:
                         (x_mudar_ip, y_mudar_ip, x_mudar_ip1, y_mudar_ip1) = 473, 39, 526, 304
                     mudar_ip(ahk, x_mudar_ip, y_mudar_ip, x_mudar_ip1, y_mudar_ip1)
-                    fechar_tudo(lista_dos_caminhos_dos_processos, lista_dos_nomes_de_processos)
+                    fechar_processos(lista_dos_caminhos_dos_processos, lista_dos_nomes_de_processos)
                     Abrir_CCsupervision(ahk)
                 break
             CloseClipboard()
         except:
+            try:
+                EmptyClipboard()
+            except:
+                pass
             try:
                 CloseClipboard()
             except:
