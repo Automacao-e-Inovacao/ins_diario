@@ -216,10 +216,10 @@ try:
     fechar_processos(lista_dos_caminhos_dos_processos, lista_dos_nomes_de_processos)
     Abrir_CCsupervision(ahk)
 
-    verificar_ip(ahk)
     while 1 == 1:
-        sleep(2)
         try:
+            sleep(2)
+            verificar_ip(ahk)
             OpenClipboard()
             if 'CCsupervision' in GetClipboardData():
                 if not '10.101.19.27' in GetClipboardData():
@@ -272,10 +272,10 @@ try:
     usuario = 'poa_rpa'
     senha = 'Rpa@1234'
 
-    verificar_ip(ahk)
     while 1 == 1:
-        sleep(2)
         try:
+            sleep(2)
+            verificar_ip(ahk)
             OpenClipboard()
             if 'CCsupervision' in GetClipboardData():
                 if not '10.48.98.70' in GetClipboardData():
