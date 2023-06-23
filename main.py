@@ -20,6 +20,7 @@ try:
     import datetime
     from ahk import AHK
     from fechar_processos import fechar_processo_python_anterior, fechar_processos
+    from encontrar_janela import encontrar_janela
     print(fechar_processo_python_anterior())
 
     with open(os.path.join(caminho_relativo, "processo_anterior.txt"), "w") as arquivo:
@@ -228,16 +229,10 @@ try:
             print(str(clipboard_texto))
             if 'CCsupervision' in clipboard_texto:
                 if not '10.101.19.27' in clipboard_texto:
-                    try:
-                        if ahk.win_get('Iniciar sess').exist:
-                            (x_mudar_ip, y_mudar_ip, x_mudar_ip1, y_mudar_ip1) = 157, 38, 196, 137
-                        else:
-                            (x_mudar_ip, y_mudar_ip, x_mudar_ip1, y_mudar_ip1) = 473, 39, 526, 304
-                    except:
-                        if ahk.win_get('Iniciar sess'):
-                            (x_mudar_ip, y_mudar_ip, x_mudar_ip1, y_mudar_ip1) = 157, 38, 196, 137
-                        else:
-                            (x_mudar_ip, y_mudar_ip, x_mudar_ip1, y_mudar_ip1) = 473, 39, 526, 304
+                    if encontrar_janela():
+                        (x_mudar_ip, y_mudar_ip, x_mudar_ip1, y_mudar_ip1) = 157, 38, 196, 137
+                    else:
+                        (x_mudar_ip, y_mudar_ip, x_mudar_ip1, y_mudar_ip1) = 473, 39, 526, 304
                     mudar_ip(ahk, x_mudar_ip, y_mudar_ip, x_mudar_ip1, y_mudar_ip1)
                     fechar_processos(lista_dos_caminhos_dos_processos, lista_dos_nomes_de_processos)
                     Abrir_CCsupervision(ahk)
@@ -295,16 +290,10 @@ try:
             print(str(clipboard_texto))
             if 'CCsupervision' in clipboard_texto:
                 if not '10.48.98.70' in clipboard_texto:
-                    try:
-                        if ahk.win_get('Iniciar sess').exist:
-                            (x_mudar_ip, y_mudar_ip, x_mudar_ip1, y_mudar_ip1) = 157, 38, 196, 137
-                        else:
-                            (x_mudar_ip, y_mudar_ip, x_mudar_ip1, y_mudar_ip1) = 473, 39, 526, 304
-                    except:
-                        if ahk.win_get('Iniciar sess'):
-                            (x_mudar_ip, y_mudar_ip, x_mudar_ip1, y_mudar_ip1) = 157, 38, 196, 137
-                        else:
-                            (x_mudar_ip, y_mudar_ip, x_mudar_ip1, y_mudar_ip1) = 473, 39, 526, 304
+                    if encontrar_janela():
+                        (x_mudar_ip, y_mudar_ip, x_mudar_ip1, y_mudar_ip1) = 157, 38, 196, 137
+                    else:
+                        (x_mudar_ip, y_mudar_ip, x_mudar_ip1, y_mudar_ip1) = 473, 39, 526, 304
                     mudar_ip(ahk, x_mudar_ip, y_mudar_ip, x_mudar_ip1, y_mudar_ip1)
                     fechar_processos(lista_dos_caminhos_dos_processos, lista_dos_nomes_de_processos)
                     Abrir_CCsupervision(ahk)
