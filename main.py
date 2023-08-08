@@ -276,7 +276,7 @@ try:
     fechar_processos(lista_dos_caminhos_dos_processos, lista_dos_nomes_de_processos)
     Abrir_CCsupervision(ahk)
     usuario = 'poa_rpa'
-    senha = 'Rpa@1234'
+    senha = 'Rpa@123456'
 
     while 1 == 1:
         try:
